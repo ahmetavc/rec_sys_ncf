@@ -6,7 +6,7 @@ from neumf import NeuMFEngine
 from data import SampleGenerator
 
 gmf_config = {'alias': 'gmf_factor8neg4-implict',
-              'num_epoch': 200,
+              'num_epoch': 1,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -27,7 +27,7 @@ gmf_config = {'alias': 'gmf_factor8neg4-implict',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}.model'}
 
 mlp_config = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001',
-              'num_epoch': 200,
+              'num_epoch': 1,
               'batch_size': 256,  # 1024,
               'optimizer': 'adam',
               'adam_lr': 1e-3,
@@ -44,7 +44,7 @@ mlp_config = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}.model'}
 
 neumf_config = {'alias': 'pretrain_neumf_factor8neg4',
-                'num_epoch': 200,
+                'num_epoch': 1,
                 'batch_size': 1024,
                 'optimizer': 'adam',
                 'adam_lr': 1e-3,
