@@ -4,19 +4,20 @@ from gmf import GMFEngine
 from mlp import MLPEngine
 from neumf import NeuMFEngine
 from data import SampleGenerator
+import pickle
 
 gmf_config = {'alias': 'gmf_factor8neg4-implict',
-              'num_epoch': 1,
+              'num_epoch': 20,
               'batch_size': 1024,
-              # 'optimizer': 'sgd',
-              # 'sgd_lr': 1e-3,
-              # 'sgd_momentum': 0.9,
+              'optimizer': 'sgd',
+              'sgd_lr': 1e-3,
+              'sgd_momentum': 0,
               # 'optimizer': 'rmsprop',
               # 'rmsprop_lr': 1e-3,
               # 'rmsprop_alpha': 0.99,
               # 'rmsprop_momentum': 0,
-              'optimizer': 'adam',
-              'adam_lr': 1e-3,
+              #'optimizer': 'adam',
+              #'adam_lr': 1e-3,
               'num_users': 6040,
               'num_items': 3706,
               'latent_dim': 8,
@@ -80,16 +81,34 @@ print('Range of itemId is [{}, {}]'.format(ml1m_rating.itemId.min(), ml1m_rating
 sample_generator = SampleGenerator(ratings=ml1m_rating)
 evaluate_data = sample_generator.evaluate_data
 # Specify the exact model
-#config = gmf_config
-#engine = GMFEngine(config)
-config = mlp_config
-engine = MLPEngine(config)
+config = gmf_config
+engine = GMFEngine(config)
+#config = mlp_config
+#engine = MLPEngine(config)
 # config = neumf_config
 # engine = NeuMFEngine(config)
+
+#MOMENTUM OPTIMIZATION
+mom_0_hr = []
+mom_0_ndcg = []
+mom_0_loss = []
+
 for epoch in range(config['num_epoch']):
     print('Epoch {} starts !'.format(epoch))
     print('-' * 80)
     train_loader = sample_generator.instance_a_train_loader(config['num_negative'], config['batch_size'])
-    engine.train_an_epoch(train_loader, epoch_id=epoch)
+    loss = engine.train_an_epoch(train_loader, epoch_id=epoch)
     hit_ratio, ndcg = engine.evaluate(evaluate_data, epoch_id=epoch)
     engine.save(config['alias'], epoch, hit_ratio, ndcg)
+    mom_0_hr.append(hit_ratio)
+    mom_0_ndcg.append(ndcg)
+    mom_0_loss.append(loss)
+
+with open('momentum/gmf_mom_0_hr', 'wb') as f:
+    pickle.dump(mom_0_hr, f)
+
+with open('momentum/gmf_mom_0_ndcg', 'wb') as f:
+    pickle.dump(mom_0_ndcg, f)
+
+with open('momentum/gmf_mom_0_loss', 'wb') as f:
+    pickle.dump(mom_0_loss, f)

@@ -50,7 +50,7 @@ class MLP(torch.nn.Module):
 
 
 class MLPEngine(Engine):
-    """Engine for training & evaluating GMF model"""
+    """Engine for training & evaluating MLP model"""
     def __init__(self, config):
         self.model = MLP(config)
         if config['use_cuda'] is True:
