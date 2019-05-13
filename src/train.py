@@ -49,6 +49,90 @@ gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'}
 
+gmf_config_adam = {'alias': 'gmf_factor8neg4-implict-adam',
+              'num_epoch': 1,
+              'batch_size': 1024,
+              # 'optimizer': 'sgd',
+              # 'sgd_lr': 1e-3,
+              # 'sgd_momentum': 0.9,
+              # 'optimizer': 'rmsprop',
+              # 'rmsprop_lr': 1e-3,
+              # 'rmsprop_alpha': 0.99,
+              # 'rmsprop_momentum': 0,
+              'optimizer': 'adam',
+              'adam_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'l2_regularization': 0, # 0.01
+              'use_cuda': True,
+              'device_id': 0,
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
+
+gmf_config_sparseadam = {'alias': 'gmf_factor8neg4-implict-sparseadam',
+              'num_epoch': 1,
+              'batch_size': 1024,
+              # 'optimizer': 'sgd',
+              # 'sgd_lr': 1e-3,
+              # 'sgd_momentum': 0.9,
+              # 'optimizer': 'rmsprop',
+              # 'rmsprop_lr': 1e-3,
+              # 'rmsprop_alpha': 0.99,
+              # 'rmsprop_momentum': 0,
+              'optimizer': 'sparseadam',
+              'sparseadam_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'l2_regularization': 0, # 0.01
+              'use_cuda': True,
+              'device_id': 0,
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sparseadam.model'}
+
+gmf_config_adamax = {'alias': 'gmf_factor8neg4-implict-adamax',
+              'num_epoch': 1,
+              'batch_size': 1024,
+              # 'optimizer': 'sgd',
+              # 'sgd_lr': 1e-3,
+              # 'sgd_momentum': 0.9,
+              # 'optimizer': 'rmsprop',
+              # 'rmsprop_lr': 1e-3,
+              # 'rmsprop_alpha': 0.99,
+              # 'rmsprop_momentum': 0,
+              'optimizer': 'adamax',
+              'adamax_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'l2_regularization': 0, # 0.01
+              'use_cuda': True,
+              'device_id': 0,
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'}
+
+gmf_config_asgd = {'alias': 'gmf_factor8neg4-implict-asgd',
+              'num_epoch': 1,
+              'batch_size': 1024,
+              # 'optimizer': 'sgd',
+              # 'sgd_lr': 1e-3,
+              # 'sgd_momentum': 0.9,
+              # 'optimizer': 'rmsprop',
+              # 'rmsprop_lr': 1e-3,
+              # 'rmsprop_alpha': 0.99,
+              # 'rmsprop_momentum': 0,
+              'optimizer': 'asgd',
+              'asgd_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'l2_regularization': 0, # 0.01
+              'use_cuda': True,
+              'device_id': 0,
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
+
 mlp_config = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001',
               'num_epoch': 200,
               'batch_size': 256,  # 1024,
@@ -173,7 +257,7 @@ for x in range (1): #Number of optimizations
             
             if (epoch+1) == config_adadelta['num_epoch']:   
                 with open('optimization/gmf_adadelta.csv', 'w') as f:
-                    csvlogger = csv.writer(f, dialect='excel', delimiter=',')
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
                     csvlogger.writerow(zip(adadelta_hr, adadelta_ndcg, adadelta_loss))
                 
         elif x == 1: #2 Adagrad Optimization
@@ -183,53 +267,78 @@ for x in range (1): #Number of optimizations
             loss = engine_adagrad.train_an_epoch(train_loader_adagrad, epoch_id=epoch)
             hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
             engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
-            #adagrad_hr.append(hit_ratio) 
-            #adagrad_ndcg.append(ndcg)
-            #adagrad_loss.append(loss)   
+            adagrad_hr.append(hit_ratio) 
+            adagrad_ndcg.append(ndcg)
+            adagrad_loss.append(loss)   
             
-            with open('optimization/gmf_adagrad.csv', 'w', newline='') as f:
-                csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                csvlogger.writerow(zip(hit_ratio, ndcg, loss))
+            if (epoch+1) == config_adagrad['num_epoch']:   
+                with open('optimization/gmf_adagrad.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(adagrad_hr, adagrad_ndcg, adagrad_loss))
                 
         elif x == 2: #3 Adam Optimization
-            with open('momentum/gmf_adam_hr', 'wb') as f:
-                pickle.dump(adam_hr, f)
-        
-            with open('momentum/gmf_adam_ndcg', 'wb') as f:
-                pickle.dump(adam_ndcg, f)
+            print('Epoch Adam {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_adam = sample_generator.instance_a_train_loader(config_adam['num_negative'], config_adam['batch_size'])
+            loss = engine_adam.train_an_epoch(train_loader_adam, epoch_id=epoch)
+            hit_ratio, ndcg = engine_adam.evaluate(evaluate_data, epoch_id=epoch)
+            engine_adam.save(config_adam['alias'], epoch, hit_ratio, ndcg)
+            adam_hr.append(hit_ratio) 
+            adam_ndcg.append(ndcg)
+            adam_loss.append(loss)   
             
-            with open('momentum/gmf_adam_loss', 'wb') as f:
-                pickle.dump(adam_loss, f)
+            if (epoch+1) == config_adam['num_epoch']:   
+                with open('optimization/gmf_adam.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(adam_hr, adam_ndcg, adam_loss))
                 
         elif x == 3: #4 SparseAdam Optimization
-            with open('momentum/gmf_sparseadam_hr', 'wb') as f:
-                pickle.dump(sparseadam_hr, f)
-        
-            with open('momentum/gmf_sparseadam_ndcg', 'wb') as f:
-                pickle.dump(sparseadam_ndcg, f)
+            print('Epoch SparseAdam {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_sparseadam = sample_generator.instance_a_train_loader(config_sparseadam['num_negative'], config_sparseadam['batch_size'])
+            loss = engine_sparseadam.train_an_epoch(train_loader_sparseadam, epoch_id=epoch)
+            hit_ratio, ndcg = engine_sparseadam.evaluate(evaluate_data, epoch_id=epoch)
+            engine_sparseadam.save(config_sparseadam['alias'], epoch, hit_ratio, ndcg)
+            sparseadam_hr.append(hit_ratio) 
+            sparseadam_ndcg.append(ndcg)
+            sparseadam_loss.append(loss)   
             
-            with open('momentum/gmf_sparseadam_loss', 'wb') as f:
-                pickle.dump(sparseadam_loss, f)
+            if (epoch+1) == config_sparseadam['num_epoch']:   
+                with open('optimization/gmf_sparseadam.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(sparseadam_hr, sparseadam_ndcg, sparseadam_loss))
                 
         elif x == 4: #5 Adamax Optimization
-            with open('momentum/gmf_adamax_hr', 'wb') as f:
-                pickle.dump(adamax_hr, f)
-        
-            with open('momentum/gmf_adamax_ndcg', 'wb') as f:
-                pickle.dump(adamax_ndcg, f)
+            print('Epoch Adamax {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_adamax = sample_generator.instance_a_train_loader(config_adamax['num_negative'], config_adamax['batch_size'])
+            loss = engine_adamax.train_an_epoch(train_loader_adamax, epoch_id=epoch)
+            hit_ratio, ndcg = engine_adamax.evaluate(evaluate_data, epoch_id=epoch)
+            engine_adamax.save(config_adamax['alias'], epoch, hit_ratio, ndcg)
+            adamax_hr.append(hit_ratio) 
+            adamax_ndcg.append(ndcg)
+            adamax_loss.append(loss)   
             
-            with open('momentum/gmf_adamax_loss', 'wb') as f:
-                pickle.dump(adamax_loss, f)
+            if (epoch+1) == config_adamax['num_epoch']:   
+                with open('optimization/gmf_adamax.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(adamax_hr, adamax_ndcg, adamax_loss))
                 
         elif x == 5: #6 ASGD Optimization
-            with open('momentum/gmf_asgd_hr', 'wb') as f:
-                pickle.dump(asgd_hr, f)
-        
-            with open('momentum/gmf_asgd_ndcg', 'wb') as f:
-                pickle.dump(asgd_ndcg, f)
+            print('Epoch ASGD {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_asgd = sample_generator.instance_a_train_loader(config_asgd['num_negative'], config_asgd['batch_size'])
+            loss = engine_asgd.train_an_epoch(train_loader_asgd, epoch_id=epoch)
+            hit_ratio, ndcg = engine_asgd.evaluate(evaluate_data, epoch_id=epoch)
+            engine_asgd.save(config_asgd['alias'], epoch, hit_ratio, ndcg)
+            asgd_hr.append(hit_ratio) 
+            asgd_ndcg.append(ndcg)
+            asgd_loss.append(loss)   
             
-            with open('momentum/gmf_asgd_loss', 'wb') as f:
-                pickle.dump(asgd_loss, f)
+            if (epoch+1) == config_asgd['num_epoch']:   
+                with open('optimization/gmf_asgd.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(asgd_hr, asgd_ndcg, asgd_loss))
                 
         elif x == 6: #7 RMSprop Optimization
             with open('momentum/gmf_rmsprop_hr', 'wb') as f:

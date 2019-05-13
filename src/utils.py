@@ -40,6 +40,17 @@ def use_optimizer(network, params):
         optimizer = torch.optim.Adam(network.parameters(), 
                                                           lr=params['adam_lr'],
                                                           weight_decay=params['l2_regularization'])
+    elif params['optimizer'] == 'sparseadam':
+        optimizer = torch.optim.SparseAdam(network.parameters(), 
+                                                          lr=params['sparseadam_lr'])
+    elif params['optimizer'] == 'adamax':
+        optimizer = torch.optim.Adamax(network.parameters(), 
+                                                          lr=params['adamax_lr'],
+                                                          weight_decay=params['l2_regularization'])
+    elif params['optimizer'] == 'asgd':
+        optimizer = torch.optim.asgd(network.parameters(), 
+                                                          lr=params['asgd_lr'],
+                                                          weight_decay=params['l2_regularization'])
     elif params['optimizer'] == 'rmsprop':
         optimizer = torch.optim.RMSprop(network.parameters(),
                                         lr=params['rmsprop_lr'],
