@@ -157,7 +157,7 @@ sgd_hr = []
 sgd_ndcg = []
 sgd_loss = []
 
-for x in range (2): #Number of optimizations
+for x in range (1): #Number of optimizations
     for epoch in range(config_adadelta['num_epoch']):
         
         if x == 0: #1 Adadelta Optimization
@@ -167,12 +167,14 @@ for x in range (2): #Number of optimizations
             loss = engine_adadelta.train_an_epoch(train_loader_adadelta, epoch_id=epoch)
             hit_ratio, ndcg = engine_adadelta.evaluate(evaluate_data, epoch_id=epoch)
             engine_adadelta.save(config_adadelta['alias'], epoch, hit_ratio, ndcg)
-            #adadelta_hr.append(hit_ratio) 
-            #adadelta_ndcg.append(ndcg)
-            #adadelta_loss.append(loss)            
-            with open('optimization/gmf_adadelta.csv', 'w', newline='') as f:
-                csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                csvlogger.writerow(zip(hit_ratio, ndcg, loss))
+            adadelta_hr.append(hit_ratio) 
+            adadelta_ndcg.append(ndcg)
+            adadelta_loss.append(loss)   
+            
+            if (epoch+1) == config_adadelta['num_epoch']:   
+                with open('optimization/gmf_adadelta.csv', 'w', newline='') as f:
+                    csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                    csvlogger.writerow(zip(adadelta_hr, adadelta_ndcg, adadelta_loss))
                 
         elif x == 1: #2 Adagrad Optimization
             print('Epoch Adagrad {} starts !'.format(epoch))
