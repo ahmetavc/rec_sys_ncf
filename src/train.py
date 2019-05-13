@@ -241,7 +241,7 @@ sgd_hr = []
 sgd_ndcg = []
 sgd_loss = []
 
-for x in range (1): #Number of optimizations
+for x in range (6): #Number of optimizations
     for epoch in range(config_adadelta['num_epoch']):
         
         if x == 0: #1 Adadelta Optimization
