@@ -156,8 +156,8 @@ sgd_hr = []
 sgd_ndcg = []
 sgd_loss = []
 
-for x in range (1): #Number of optimizations
-    for epoch in range(config['num_epoch']):
+for x in range (2): #Number of optimizations
+    for epoch in range(config_adadelta['num_epoch']):
         
         if x == 0: #1 Adadelta Optimization
             print('Epoch Adadelta {} starts !'.format(epoch))
@@ -165,7 +165,7 @@ for x in range (1): #Number of optimizations
             train_loader_adadelta = sample_generator.instance_a_train_loader(config_adadelta['num_negative'], config_adadelta['batch_size'])
             engine_adadelta.train_an_epoch(train_loader_adadelta, epoch_id=epoch)
             hit_ratio, ndcg = engine_adadelta.evaluate(evaluate_data, epoch_id=epoch)
-            engine_adadelta.save(config['alias'], epoch, hit_ratio, ndcg)
+            engine_adadelta.save(config_adadelta['alias'], epoch, hit_ratio, ndcg)
             adadelta_hr.append(hit_ratio) 
             adadelta_ndcg.append(ncdg)
             adadelta_loss.append(loss)            
@@ -184,7 +184,7 @@ for x in range (1): #Number of optimizations
             train_loader_adagrad = sample_generator.instance_a_train_loader(config_adagrad['num_negative'], config_adagrad['batch_size'])
             engine_adagrad.train_an_epoch(train_loader_adagrad, epoch_id=epoch)
             hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
-            engine_adagrad.save(config['alias'], epoch, hit_ratio, ndcg)
+            engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
             adagradappend(hit_ratio) 
             adagrad_ndcg.append(ncdg)
             adagrad_loss.append(loss)   
