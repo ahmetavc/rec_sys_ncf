@@ -8,7 +8,7 @@ import pickle
 import csv
 
 gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
-              'num_epoch': 2,
+              'num_epoch': 1,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -29,7 +29,7 @@ gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
 
 gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
-              'num_epoch': 2,
+              'num_epoch': 1,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -172,8 +172,8 @@ for x in range (1): #Number of optimizations
             adadelta_loss.append(loss)   
             
             if (epoch+1) == config_adadelta['num_epoch']:   
-                with open('optimization/gmf_adadelta.csv', 'w', newline='') as f:
-                    csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                with open('optimization/gmf_adadelta.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='csv.excel', delimiter=',')
                     csvlogger.writerow(zip(adadelta_hr, adadelta_ndcg, adadelta_loss))
                 
         elif x == 1: #2 Adagrad Optimization
