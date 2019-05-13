@@ -7,6 +7,8 @@ from data import SampleGenerator
 import pickle
 import csv
 
+#Adam was standard I think
+
 gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
               'num_epoch': 1,
               'batch_size': 1024,
@@ -70,27 +72,6 @@ gmf_config_adam = {'alias': 'gmf_factor8neg4-implict-adam',
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
 
-gmf_config_sparseadam = {'alias': 'gmf_factor8neg4-implict-sparseadam',
-              'num_epoch': 1,
-              'batch_size': 1024,
-              # 'optimizer': 'sgd',
-              # 'sgd_lr': 1e-3,
-              # 'sgd_momentum': 0.9,
-              # 'optimizer': 'rmsprop',
-              # 'rmsprop_lr': 1e-3,
-              # 'rmsprop_alpha': 0.99,
-              # 'rmsprop_momentum': 0,
-              'optimizer': 'sparseadam',
-              'sparseadam_lr': 1e-3,
-              'num_users': 6040,
-              'num_items': 3706,
-              'latent_dim': 8,
-              'num_negative': 4,
-              'l2_regularization': 0, # 0.01
-              'use_cuda': True,
-              'device_id': 0,
-              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sparseadam.model'}
-
 gmf_config_adamax = {'alias': 'gmf_factor8neg4-implict-adamax',
               'num_epoch': 1,
               'batch_size': 1024,
@@ -132,6 +113,45 @@ gmf_config_asgd = {'alias': 'gmf_factor8neg4-implict-asgd',
               'use_cuda': True,
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
+
+gmf_config_rmsprop = {'alias': 'gmf_factor8neg4-implict-rmsprop',
+              'num_epoch': 1,
+              'batch_size': 1024,
+              # 'optimizer': 'sgd',
+              # 'sgd_lr': 1e-3,
+              # 'sgd_momentum': 0.9,
+              # 'optimizer': 'rmsprop',
+              # 'rmsprop_lr': 1e-3,
+              # 'rmsprop_alpha': 0.99,
+              # 'rmsprop_momentum': 0,
+              'optimizer': 'rmsprop',
+              'rmsprop_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'l2_regularization': 0, # 0.01
+              'use_cuda': True,
+              'device_id': 0,
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_rmsprop.model'}
+
+
+gmf_config_sgd = {'alias': 'gmf_factor8neg4-implict-sgd',
+              'num_epoch': 1,
+              'batch_size': 1024,
+              'optimizer': 'sgd',
+              'sgd_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'l2_regularization': 0, # 0.01
+              'use_cuda': True,
+              'device_id': 0,
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sgd.model'}
+
+
+
 
 mlp_config = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001',
               'num_epoch': 200,
@@ -193,12 +213,17 @@ config_adagrad = gmf_config_adagrad
 engine_adagrad = GMFEngine(config_adagrad)
 config_adam = gmf_config_adam
 engine_adam = GMFEngine(config_adam)
-config_sparseadam = gmf_config_sparseadam
-engine_sparseadam = GMFEngine(config_sparseadam)
 config_adamax = gmf_config_adamax
 engine_adamax = GMFEngine(config_adamax)
 config_asgd= gmf_config_asgd
 engine_asgd = GMFEngine(config_asgd)
+config_rmsprop= gmf_config_rmsprop
+engine_rmsprop = GMFEngine(config_rmsprop)
+config_sgd= gmf_config_sgd
+engine_sgd = GMFEngine(config_sgd)
+
+
+
 # config = mlp_config
 # engine = MLPEngine(config)
 #config = neumf_config
@@ -219,32 +244,22 @@ adam_hr = []
 adam_ndcg = []
 adam_loss = []
 
-#4 SparseAdam Optimization
-sparseadam_hr = []
-sparseadam_ndcg = []
-sparseadam_loss = []
-
-#5 Adamax Optimization
+#4 Adamax Optimization
 adamax_hr = []
 adamax_ndcg = []
 adamax_loss = []
 
-#6 ASGD Optimization
+#5 ASGD Optimization
 asgd_hr = []
 asgd_ndcg = []
 asgd_loss = []
 
-#7 RMSprop Optimization
+#6 RMSprop Optimization
 rmsprop_hr = []
 rmsprop_ndcg = []
 rmsprop_loss = []
 
-#8 Rprop Optimization
-rprop_hr = []
-rprop_ndcg = []
-rprop_loss = []
-
-#9 SGD Optimization
+#7 SGD Optimization
 sgd_hr = []
 sgd_ndcg = []
 sgd_loss = []
@@ -300,23 +315,8 @@ for x in range (6): #Number of optimizations
                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
                     csvlogger.writerow(zip(adam_hr, adam_ndcg, adam_loss))
                 
-        elif x == 3: #4 SparseAdam Optimization
-            print('Epoch SparseAdam {} starts !'.format(epoch))
-            print('-' * 80)
-            train_loader_sparseadam = sample_generator.instance_a_train_loader(config_sparseadam['num_negative'], config_sparseadam['batch_size'])
-            loss = engine_sparseadam.train_an_epoch(train_loader_sparseadam, epoch_id=epoch)
-            hit_ratio, ndcg = engine_sparseadam.evaluate(evaluate_data, epoch_id=epoch)
-            engine_sparseadam.save(config_sparseadam['alias'], epoch, hit_ratio, ndcg)
-            sparseadam_hr.append(hit_ratio) 
-            sparseadam_ndcg.append(ndcg)
-            sparseadam_loss.append(loss)   
-            
-            if (epoch+1) == config_sparseadam['num_epoch']:   
-                with open('optimization/gmf_sparseadam.csv', 'w') as f:
-                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-                    csvlogger.writerow(zip(sparseadam_hr, sparseadam_ndcg, sparseadam_loss))
                 
-        elif x == 4: #5 Adamax Optimization
+        elif x == 3: #4 Adamax Optimization
             print('Epoch Adamax {} starts !'.format(epoch))
             print('-' * 80)
             train_loader_adamax = sample_generator.instance_a_train_loader(config_adamax['num_negative'], config_adamax['batch_size'])
@@ -332,7 +332,7 @@ for x in range (6): #Number of optimizations
                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
                     csvlogger.writerow(zip(adamax_hr, adamax_ndcg, adamax_loss))
                 
-        elif x == 5: #6 ASGD Optimization
+        elif x == 4: #5 ASGD Optimization
             print('Epoch ASGD {} starts !'.format(epoch))
             print('-' * 80)
             train_loader_asgd = sample_generator.instance_a_train_loader(config_asgd['num_negative'], config_asgd['batch_size'])
@@ -348,33 +348,35 @@ for x in range (6): #Number of optimizations
                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
                     csvlogger.writerow(zip(asgd_hr, asgd_ndcg, asgd_loss))
                 
-        elif x == 6: #7 RMSprop Optimization
-            with open('momentum/gmf_rmsprop_hr', 'wb') as f:
-                pickle.dump(rmsprop_hr, f)
-        
-            with open('momentum/gmf_rmsprop_ndcg', 'wb') as f:
-                pickle.dump(rmsprop_ndcg, f)
+        elif x == 5: #6 RMSprop Optimization
+            print('Epoch RMSprop {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_rmsprop = sample_generator.instance_a_train_loader(config_rmsprop['num_negative'], config_rmsprop['batch_size'])
+            loss = engine_rmsprop.train_an_epoch(train_loader_rmsprop, epoch_id=epoch)
+            hit_ratio, ndcg = engine_rmsprop.evaluate(evaluate_data, epoch_id=epoch)
+            engine_rmsprop.save(config_rmsprop['alias'], epoch, hit_ratio, ndcg)
+            rmsprop_hr.append(hit_ratio) 
+            rmsprop_ndcg.append(ndcg)
+            rmsprop_loss.append(loss)   
             
-            with open('momentum/gmf_rmsprop_loss', 'wb') as f:
-                pickle.dump(rmsprop_loss, f)
+            if (epoch+1) == config_rmsprop['num_epoch']:   
+                with open('optimization/gmf_rmsprop.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(rmsprop_hr, rmsprop_ndcg, rmsprop_loss))
+
                 
-        elif x == 7: #8 Rprop Optimization
-            with open('momentum/gmf_rprop_hr', 'wb') as f:
-                pickle.dump(rprop_hr, f)
-        
-            with open('momentum/gmf_rprop_ndcg', 'wb') as f:
-                pickle.dump(rprop_ndcg, f)
+        elif x == 6: #7 SGD Optimization
+            print('Epoch SGD {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_sgd = sample_generator.instance_a_train_loader(config_sgd['num_negative'], config_sgd['batch_size'])
+            loss = engine_sgd.train_an_epoch(train_loader_sgd, epoch_id=epoch)
+            hit_ratio, ndcg = engine_sgd.evaluate(evaluate_data, epoch_id=epoch)
+            engine_sgd.save(config_sgd['alias'], epoch, hit_ratio, ndcg)
+            sgd_hr.append(hit_ratio) 
+            sgd_ndcg.append(ndcg)
+            sgd_loss.append(loss)   
             
-            with open('momentum/gmf_rprop_loss', 'wb') as f:
-                pickle.dump(rprop_loss, f)
-                
-        elif x == 8: #9 SGD Optimization
-            with open('momentum/gmf_sgd_hr', 'wb') as f:
-                pickle.dump(sgd_hr, f)
-        
-            with open('momentum/gmf_sgd_ndcg', 'wb') as f:
-                pickle.dump(sgd_ndcg, f)
-            
-            with open('momentum/gmf_sgd_loss', 'wb') as f:
-                pickle.dump(sgd_loss, f)
-            
+            if (epoch+1) == config_sgd['num_epoch']:   
+                with open('optimization/gmf_sgd.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(sgd_hr, sgd_ndcg, sgd_loss))
