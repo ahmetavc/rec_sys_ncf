@@ -173,7 +173,7 @@ for x in range (1): #Number of optimizations
             
             if (epoch+1) == config_adadelta['num_epoch']:   
                 with open('optimization/gmf_adadelta.csv', 'w') as f:
-                    csvlogger = csv.writer(f, dialect='csv.excel', delimiter=',')
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=',')
                     csvlogger.writerow(zip(adadelta_hr, adadelta_ndcg, adadelta_loss))
                 
         elif x == 1: #2 Adagrad Optimization
