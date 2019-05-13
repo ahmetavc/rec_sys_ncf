@@ -5,6 +5,7 @@ from mlp import MLPEngine
 from neumf import NeuMFEngine
 from data import SampleGenerator
 import pickle
+import csv
 
 gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
               'num_epoch': 2,
@@ -169,14 +170,9 @@ for x in range (2): #Number of optimizations
             adadelta_hr.append(hit_ratio) 
             adadelta_ndcg.append(ndcg)
             adadelta_loss.append(loss)            
-            with open('optimization/gmf_adadelta_hr', 'wb') as f:
-                pickle.dump(adadelta_hr, f)
-        
-            with open('optimization/gmf_adadelta_ndcg', 'wb') as f:
-                pickle.dump(adadelta_ndcg, f)
-            
-            with open('optimization/gmf_adadelta_loss', 'wb') as f:
-                pickle.dump(adadelta_loss, f)
+            with open('optimization/gmf_adadelta.csv', 'w', newline='') as f:
+                csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                csvlogger.writerow(adadelta_hr, adadelta_ndcg, adadelta_loss)
                 
         elif x == 1: #2 Adagrad Optimization
             print('Epoch Adagrad {} starts !'.format(epoch))
@@ -185,18 +181,13 @@ for x in range (2): #Number of optimizations
             loss = engine_adagrad.train_an_epoch(train_loader_adagrad, epoch_id=epoch)
             hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
             engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
-            adagradappend(hit_ratio) 
+            adagrad_hr.append(hit_ratio) 
             adagrad_ndcg.append(ndcg)
             adagrad_loss.append(loss)   
             
-            with open('optimization/gmf_adagrad_hr', 'wb') as f:
-                pickle.dump(adagrad_hr, f)
-        
-            with open('optimization/gmf_adagrad_ndcg', 'wb') as f:
-                pickle.dump(adagrad_ndcg, f)
-            
-            with open('optimization/gmf_adagrad_loss', 'wb') as f:
-                pickle.dump(adagrad_loss, f)
+            with open('optimization/gmf_adagrad.csv', 'w', newline='') as f:
+                csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                csvlogger.writerow(adagrad_hr, adagrad_ndcg, adagrad_loss)
                 
         elif x == 2: #3 Adam Optimization
             with open('momentum/gmf_adam_hr', 'wb') as f:
