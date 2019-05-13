@@ -26,7 +26,6 @@ def use_optimizer(network, params):
     if params['optimizer'] == 'sgd':
         optimizer = torch.optim.SGD(network.parameters(),
                                     lr=params['sgd_lr'],
-                                    momentum=params['sgd_momentum'],
                                     weight_decay=params['l2_regularization'])
     elif params['optimizer'] == 'adadelta':
         optimizer = torch.optim.Adadelta(network.parameters(),
