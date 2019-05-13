@@ -28,6 +28,14 @@ def use_optimizer(network, params):
                                     lr=params['sgd_lr'],
                                     momentum=params['sgd_momentum'],
                                     weight_decay=params['l2_regularization'])
+    elif params['optimizer'] == 'adadelta':
+        optimizer = torch.optim.Adadelta(network.parameters(),
+                                    lr=params['adadelta_lr'],
+                                    weight_decay=params['l2_regularization'])
+    elif params['optimizer'] == 'adagrad':
+        optimizer = torch.optim.Adagrad(network.parameters(),
+                                    lr=params['adagrad_lr'],
+                                    weight_decay=params['l2_regularization'])
     elif params['optimizer'] == 'adam':
         optimizer = torch.optim.Adam(network.parameters(), 
                                                           lr=params['adam_lr'],
