@@ -167,15 +167,15 @@ for x in range (2): #Number of optimizations
             hit_ratio, ndcg = engine_adadelta.evaluate(evaluate_data, epoch_id=epoch)
             engine_adadelta.save(config_adadelta['alias'], epoch, hit_ratio, ndcg)
             adadelta_hr.append(hit_ratio) 
-            adadelta_ndcg.append(ncdg)
+            adadelta_ndcg.append(ndcg)
             adadelta_loss.append(loss)            
-            with open('momentum/gmf_adadelta_hr', 'wb') as f:
+            with open('optimization/gmf_adadelta_hr', 'wb') as f:
                 pickle.dump(adadelta_hr, f)
         
-            with open('momentum/gmf_adadelta_ndcg', 'wb') as f:
+            with open('optimization/gmf_adadelta_ndcg', 'wb') as f:
                 pickle.dump(adadelta_ndcg, f)
             
-            with open('momentum/gmf_adadelta_loss', 'wb') as f:
+            with open('optimization/gmf_adadelta_loss', 'wb') as f:
                 pickle.dump(adadelta_loss, f)
                 
         elif x == 1: #2 Adagrad Optimization
@@ -186,16 +186,16 @@ for x in range (2): #Number of optimizations
             hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
             engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
             adagradappend(hit_ratio) 
-            adagrad_ndcg.append(ncdg)
+            adagrad_ndcg.append(ndcg)
             adagrad_loss.append(loss)   
             
-            with open('momentum/gmf_adagrad_hr', 'wb') as f:
+            with open('optimization/gmf_adagrad_hr', 'wb') as f:
                 pickle.dump(adagrad_hr, f)
         
-            with open('momentum/gmf_adagrad_ndcg', 'wb') as f:
+            with open('optimization/gmf_adagrad_ndcg', 'wb') as f:
                 pickle.dump(adagrad_ndcg, f)
             
-            with open('momentum/gmf_adagrad_loss', 'wb') as f:
+            with open('optimization/gmf_adagrad_loss', 'wb') as f:
                 pickle.dump(adagrad_loss, f)
                 
         elif x == 2: #3 Adam Optimization
