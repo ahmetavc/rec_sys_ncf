@@ -172,7 +172,7 @@ for x in range (2): #Number of optimizations
             #adadelta_loss.append(loss)            
             with open('optimization/gmf_adadelta.csv', 'w', newline='') as f:
                 csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                csvlogger.writerow(hit_ratio, ndcg, loss)
+                csvlogger.writerow(zip(hit_ratio, ndcg, loss))
                 
         elif x == 1: #2 Adagrad Optimization
             print('Epoch Adagrad {} starts !'.format(epoch))
@@ -187,7 +187,7 @@ for x in range (2): #Number of optimizations
             
             with open('optimization/gmf_adagrad.csv', 'w', newline='') as f:
                 csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                csvlogger.writerow(hit_ratio, ndcg, loss)
+                csvlogger.writerow(zip(hit_ratio, ndcg, loss))
                 
         elif x == 2: #3 Adam Optimization
             with open('momentum/gmf_adam_hr', 'wb') as f:
