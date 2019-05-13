@@ -10,7 +10,7 @@ import csv
 #Adam was standard I think
 
 gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
-              'num_epoch': 1,
+              'num_epoch': 2,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -31,7 +31,7 @@ gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
 
 gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
-              'num_epoch': 1,
+              'num_epoch': 2,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -52,7 +52,7 @@ gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'}
 
 gmf_config_adam = {'alias': 'gmf_factor8neg4-implict-adam',
-              'num_epoch': 1,
+              'num_epoch': 2,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -73,7 +73,7 @@ gmf_config_adam = {'alias': 'gmf_factor8neg4-implict-adam',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
 
 gmf_config_adamax = {'alias': 'gmf_factor8neg4-implict-adamax',
-              'num_epoch': 1,
+              'num_epoch': 2,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -94,7 +94,7 @@ gmf_config_adamax = {'alias': 'gmf_factor8neg4-implict-adamax',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'}
 
 gmf_config_asgd = {'alias': 'gmf_factor8neg4-implict-asgd',
-              'num_epoch': 1,
+              'num_epoch': 2,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -115,7 +115,7 @@ gmf_config_asgd = {'alias': 'gmf_factor8neg4-implict-asgd',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
 
 gmf_config_rmsprop = {'alias': 'gmf_factor8neg4-implict-rmsprop',
-              'num_epoch': 1,
+              'num_epoch': 2,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
               # 'sgd_lr': 1e-3,
@@ -137,7 +137,7 @@ gmf_config_rmsprop = {'alias': 'gmf_factor8neg4-implict-rmsprop',
 
 
 gmf_config_sgd = {'alias': 'gmf_factor8neg4-implict-sgd',
-              'num_epoch': 1,
+              'num_epoch': 2,
               'batch_size': 1024,
               'optimizer': 'sgd',
               'sgd_lr': 1e-3,
@@ -264,7 +264,7 @@ sgd_hr = []
 sgd_ndcg = []
 sgd_loss = []
 
-for x in range (6): #Number of optimizations
+for x in range (7): #Number of optimizations
     for epoch in range(config_adadelta['num_epoch']):
         
         if x == 0: #1 Adadelta Optimization
