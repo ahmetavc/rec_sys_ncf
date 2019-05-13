@@ -48,7 +48,7 @@ def use_optimizer(network, params):
                                                           lr=params['adamax_lr'],
                                                           weight_decay=params['l2_regularization'])
     elif params['optimizer'] == 'asgd':
-        optimizer = torch.optim.asgd(network.parameters(), 
+        optimizer = torch.optim.ASGD(network.parameters(), 
                                                           lr=params['asgd_lr'],
                                                           weight_decay=params['l2_regularization'])
     elif params['optimizer'] == 'rmsprop':
