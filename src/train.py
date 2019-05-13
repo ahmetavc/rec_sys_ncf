@@ -167,12 +167,12 @@ for x in range (2): #Number of optimizations
             loss = engine_adadelta.train_an_epoch(train_loader_adadelta, epoch_id=epoch)
             hit_ratio, ndcg = engine_adadelta.evaluate(evaluate_data, epoch_id=epoch)
             engine_adadelta.save(config_adadelta['alias'], epoch, hit_ratio, ndcg)
-            adadelta_hr.append(hit_ratio) 
-            adadelta_ndcg.append(ndcg)
-            adadelta_loss.append(loss)            
+            #adadelta_hr.append(hit_ratio) 
+            #adadelta_ndcg.append(ndcg)
+            #adadelta_loss.append(loss)            
             with open('optimization/gmf_adadelta.csv', 'w', newline='') as f:
                 csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                csvlogger.writerow(adadelta_hr, adadelta_ndcg, adadelta_loss)
+                csvlogger.writerow(hit_ratio, ndcg, loss)
                 
         elif x == 1: #2 Adagrad Optimization
             print('Epoch Adagrad {} starts !'.format(epoch))
@@ -181,13 +181,13 @@ for x in range (2): #Number of optimizations
             loss = engine_adagrad.train_an_epoch(train_loader_adagrad, epoch_id=epoch)
             hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
             engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
-            adagrad_hr.append(hit_ratio) 
-            adagrad_ndcg.append(ndcg)
-            adagrad_loss.append(loss)   
+            #adagrad_hr.append(hit_ratio) 
+            #adagrad_ndcg.append(ndcg)
+            #adagrad_loss.append(loss)   
             
             with open('optimization/gmf_adagrad.csv', 'w', newline='') as f:
                 csvlogger = csv.writer(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-                csvlogger.writerow(adagrad_hr, adagrad_ndcg, adagrad_loss)
+                csvlogger.writerow(hit_ratio, ndcg, loss)
                 
         elif x == 2: #3 Adam Optimization
             with open('momentum/gmf_adam_hr', 'wb') as f:
