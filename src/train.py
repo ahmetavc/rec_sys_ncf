@@ -6,7 +6,7 @@ from neumf import NeuMFEngine
 from data import SampleGenerator
 import pickle
 
-gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict',
+gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
               'num_epoch': 2,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
@@ -27,7 +27,7 @@ gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict',
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
 
-gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict',
+gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
               'num_epoch': 2,
               'batch_size': 1024,
               # 'optimizer': 'sgd',
@@ -156,7 +156,7 @@ sgd_hr = []
 sgd_ndcg = []
 sgd_loss = []
 
-for x in range (0): #Number of optimizations
+for x in range (1): #Number of optimizations
     for epoch in range(config['num_epoch']):
         
         if x == 0: #1 Adadelta Optimization
