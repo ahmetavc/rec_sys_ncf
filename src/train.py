@@ -30,6 +30,23 @@ gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
 
+mlp_config_adadelta = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adadelta',
+              'num_epoch': 1,
+              'batch_size': 1024,  
+              'optimizer': 'adamdelta',
+              'adadelta_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+              'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
+              'use_cuda': True,
+              'device_id': 7,
+              'pretrain': True,
+              'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adadelta_Epoch19_HR0.1010_NDCG0.0457_adadelta.model'),
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
+
 gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
               'num_epoch': 20,
               'batch_size': 1024,
@@ -49,6 +66,23 @@ gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
               'l2_regularization': 0, # 0.01
               'use_cuda': True,
               'device_id': 0,
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'}
+
+mlp_config_adagrad = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adagrad',
+              'num_epoch': 1,
+              'batch_size': 1024,  
+              'optimizer': 'adagrad',
+              'adagrad_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+              'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
+              'use_cuda': True,
+              'device_id': 7,
+              'pretrain': True,
+              'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adagrad_Epoch19_HR0.1066_NDCG0.0479_adagrad.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'}
 
 gmf_config_adam = {'alias': 'gmf_factor8neg4-implict-adam',
@@ -72,6 +106,23 @@ gmf_config_adam = {'alias': 'gmf_factor8neg4-implict-adam',
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
 
+mlp_config_adam = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adam',
+              'num_epoch': 1,
+              'batch_size': 1024,  
+              'optimizer': 'adam',
+              'adam_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+              'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
+              'use_cuda': True,
+              'device_id': 7,
+              'pretrain': True,
+              'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adam_Epoch19_HR0.6025_NDCG0.3427_adam.model'),
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
+
 gmf_config_adamax = {'alias': 'gmf_factor8neg4-implict-adamax',
               'num_epoch': 20,
               'batch_size': 1024,
@@ -91,6 +142,23 @@ gmf_config_adamax = {'alias': 'gmf_factor8neg4-implict-adamax',
               'l2_regularization': 0, # 0.01
               'use_cuda': True,
               'device_id': 0,
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'}
+
+mlp_config_adamax = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adamax',
+              'num_epoch': 1,
+              'batch_size': 1024,  
+              'optimizer': 'adamax',
+              'adamax_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+              'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
+              'use_cuda': True,
+              'device_id': 7,
+              'pretrain': True,
+              'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adamax_Epoch19_HR0.2422_NDCG0.1265_adamax.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'}
 
 gmf_config_asgd = {'alias': 'gmf_factor8neg4-implict-asgd',
@@ -114,6 +182,23 @@ gmf_config_asgd = {'alias': 'gmf_factor8neg4-implict-asgd',
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
 
+mlp_config_asgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-asgd',
+              'num_epoch': 1,
+              'batch_size': 1024,  
+              'optimizer': 'asgd',
+              'asgd_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+              'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
+              'use_cuda': True,
+              'device_id': 7,
+              'pretrain': True,
+              'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-asgd_Epoch19_HR0.0949_NDCG0.0418_asgd.model'),
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
+
 gmf_config_rmsprop = {'alias': 'gmf_factor8neg4-implict-rmsprop',
               'num_epoch': 20,
               'batch_size': 1024,
@@ -135,6 +220,22 @@ gmf_config_rmsprop = {'alias': 'gmf_factor8neg4-implict-rmsprop',
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_rmsprop.model'}
 
+mlp_config_rmsprop = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-rmsprop',
+              'num_epoch': 1,
+              'batch_size': 1024,  
+              'optimizer': 'rmsprop',
+              'rmsprop_lr': 1e-3,
+              'num_users': 6040,
+              'num_items': 3706,
+              'latent_dim': 8,
+              'num_negative': 4,
+              'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+              #'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
+              'use_cuda': True,
+              'device_id': 7,
+              'pretrain': True,
+              'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-rmsprop_Epoch19_HR0.5689_NDCG0.3182_rmsprop.model'),
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_rmsprop.model'}
 
 gmf_config_sgd = {'alias': 'gmf_factor8neg4-implict-sgd',
               'num_epoch': 20,
@@ -150,25 +251,40 @@ gmf_config_sgd = {'alias': 'gmf_factor8neg4-implict-sgd',
               'device_id': 0,
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sgd.model'}
 
-
-
-
-mlp_config = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001',
-              'num_epoch': 200,
-              'batch_size': 256,  # 1024,
-              'optimizer': 'adam',
-              'adam_lr': 1e-3,
+mlp_config_sgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-sgd',
+              'num_epoch': 1,
+              'batch_size': 1024,  
+              'optimizer': 'sgd',
+              'sgd_lr': 1e-3,
               'num_users': 6040,
               'num_items': 3706,
               'latent_dim': 8,
               'num_negative': 4,
-              'layers': [16,64,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+              'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
               'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
               'use_cuda': True,
               'device_id': 7,
               'pretrain': True,
-              'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4_Epoch100_HR0.6391_NDCG0.2852.model'),
-              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}.model'}
+              'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-sgd_Epoch19_HR0.0944_NDCG0.0426_sgd.model'),
+              'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sgd.model'}
+
+
+# mlp_config = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001',
+#               'num_epoch': 200,
+#               'batch_size': 256,  # 1024,
+#               'optimizer': 'adam',
+#               'adam_lr': 1e-3,
+#               'num_users': 6040,
+#               'num_items': 3706,
+#               'latent_dim': 8,
+#               'num_negative': 4,
+#               'layers': [16,64,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+#               'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
+#               'use_cuda': True,
+#               'device_id': 7,
+#               'pretrain': True,
+#               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4_Epoch100_HR0.6391_NDCG0.2852.model'),
+#               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}.model'}
 
 neumf_config = {'alias': 'pretrain_neumf_factor8neg4',
                 'num_epoch': 200,
@@ -207,27 +323,40 @@ print('Range of itemId is [{}, {}]'.format(ml1m_rating.itemId.min(), ml1m_rating
 sample_generator = SampleGenerator(ratings=ml1m_rating)
 evaluate_data = sample_generator.evaluate_data
 # Specify the exact model
-config_adadelta = gmf_config_adadelta
-engine_adadelta = GMFEngine(config_adadelta)
-config_adagrad = gmf_config_adagrad
-engine_adagrad = GMFEngine(config_adagrad)
-config_adam = gmf_config_adam
-engine_adam = GMFEngine(config_adam)
-config_adamax = gmf_config_adamax
-engine_adamax = GMFEngine(config_adamax)
-config_asgd= gmf_config_asgd
-engine_asgd = GMFEngine(config_asgd)
-config_rmsprop= gmf_config_rmsprop
-engine_rmsprop = GMFEngine(config_rmsprop)
-config_sgd= gmf_config_sgd
-engine_sgd = GMFEngine(config_sgd)
-
-
+# config_adadelta = gmf_config_adadelta
+# engine_adadelta = GMFEngine(config_adadelta)
+# config_adagrad = gmf_config_adagrad
+# engine_adagrad = GMFEngine(config_adagrad)
+# config_adam = gmf_config_adam
+# engine_adam = GMFEngine(config_adam)
+# config_adamax = gmf_config_adamax
+# engine_adamax = GMFEngine(config_adamax)
+# config_asgd= gmf_config_asgd
+# engine_asgd = GMFEngine(config_asgd)
+# config_rmsprop= gmf_config_rmsprop
+# engine_rmsprop = GMFEngine(config_rmsprop)
+# config_sgd= gmf_config_sgd
+# engine_sgd = GMFEngine(config_sgd)
 
 # config = mlp_config
 # engine = MLPEngine(config)
-#config = neumf_config
-#engine = NeuMFEngine(config)
+config_adadelta = mlp_config_adadelta
+engine_adadelta = MLPEngine(config_adadelta)
+config_adagrad = mlp_config_adagrad
+engine_adagrad = MLPEngine(config_adagrad)
+config_adam = mlp_config_adam
+engine_adam = MLPEngine(config_adam)
+config_adamax = mlp_config_adamax
+engine_adamax = MLPEngine(config_adamax)
+config_asgd= mlp_config_asgd
+engine_asgd = MLPEngine(config_asgd)
+config_rmsprop= mlp_config_rmsprop
+engine_rmsprop = MLPEngine(config_rmsprop)
+config_sgd= mlp_config_sgd
+engine_sgd = MLPEngine(config_sgd)
+
+# config = neumf_config
+# engine = NeuMFEngine(config)
 
 #1 Adadelta Optimization
 adadelta_hr = []
