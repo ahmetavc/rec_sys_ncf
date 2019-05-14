@@ -33,7 +33,7 @@ gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
 mlp_config_adadelta = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adadelta',
               'num_epoch': 1,
               'batch_size': 1024,  
-              'optimizer': 'adamdelta',
+              'optimizer': 'adadelta',
               'adadelta_lr': 1e-3,
               'num_users': 6040,
               'num_items': 3706,
@@ -42,7 +42,7 @@ mlp_config_adadelta = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.
               'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
               'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
               'use_cuda': True,
-              'device_id': 7,
+              'device_id': 0,
               'pretrain': True,
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adadelta_Epoch19_HR0.1010_NDCG0.0457_adadelta.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
@@ -80,7 +80,7 @@ mlp_config_adagrad = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0
               'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
               'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
               'use_cuda': True,
-              'device_id': 7,
+              'device_id': 0,
               'pretrain': True,
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adagrad_Epoch19_HR0.1066_NDCG0.0479_adagrad.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'}
@@ -118,7 +118,7 @@ mlp_config_adam = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000
               'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
               'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
               'use_cuda': True,
-              'device_id': 7,
+              'device_id': 0,
               'pretrain': True,
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adam_Epoch19_HR0.6025_NDCG0.3427_adam.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
@@ -156,7 +156,7 @@ mlp_config_adamax = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.00
               'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
               'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
               'use_cuda': True,
-              'device_id': 7,
+              'device_id': 0,
               'pretrain': True,
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adamax_Epoch19_HR0.2422_NDCG0.1265_adamax.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'}
@@ -194,7 +194,7 @@ mlp_config_asgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000
               'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
               'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
               'use_cuda': True,
-              'device_id': 7,
+              'device_id': 0,
               'pretrain': True,
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-asgd_Epoch19_HR0.0949_NDCG0.0418_asgd.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
@@ -232,7 +232,7 @@ mlp_config_rmsprop = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0
               'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
               #'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
               'use_cuda': True,
-              'device_id': 7,
+              'device_id': 0,
               'pretrain': True,
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-rmsprop_Epoch19_HR0.5689_NDCG0.3182_rmsprop.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_rmsprop.model'}
@@ -263,7 +263,7 @@ mlp_config_sgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.00000
               'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
               'l2_regularization': 0.0000001,  # MLP model is sensitive to hyper params
               'use_cuda': True,
-              'device_id': 7,
+              'device_id': 0,
               'pretrain': True,
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-sgd_Epoch19_HR0.0944_NDCG0.0426_sgd.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sgd.model'}
@@ -299,7 +299,7 @@ neumf_config = {'alias': 'pretrain_neumf_factor8neg4',
                 'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
                 'l2_regularization': 0.01,
                 'use_cuda': True,
-                'device_id': 7,
+                'device_id': 0,
                 'pretrain': False,
                 'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4_Epoch100_HR0.xxxx_NDCG0.2852.model'),
                 'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_Epoch100_HR0.xxxx_NDCG0.2463.model'),
