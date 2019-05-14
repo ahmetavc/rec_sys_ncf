@@ -396,88 +396,88 @@ sgd_loss = []
 for x in range (7): #Number of optimizations
     for epoch in range(config_adadelta['num_epoch']):
         
-        if x == 0: #1 Adadelta Optimization
-            print('Epoch Adadelta {} starts !'.format(epoch))
-            print('-' * 80)
-            train_loader_adadelta = sample_generator.instance_a_train_loader(config_adadelta['num_negative'], config_adadelta['batch_size'])
-            loss = engine_adadelta.train_an_epoch(train_loader_adadelta, epoch_id=epoch)
-            hit_ratio, ndcg = engine_adadelta.evaluate(evaluate_data, epoch_id=epoch)
-            engine_adadelta.save(config_adadelta['alias'], epoch, hit_ratio, ndcg)
-            adadelta_hr.append(hit_ratio) 
-            adadelta_ndcg.append(ndcg)
-            adadelta_loss.append(loss)   
-            
-            if (epoch+1) == config_adadelta['num_epoch']:   
-                with open('optimization/gmf_adadelta.csv', 'w') as f:
-                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-                    csvlogger.writerow(zip(adadelta_hr, adadelta_ndcg, adadelta_loss))
+#         if x == 0: #1 Adadelta Optimization
+#             print('Epoch Adadelta {} starts !'.format(epoch))
+#             print('-' * 80)
+#             train_loader_adadelta = sample_generator.instance_a_train_loader(config_adadelta['num_negative'], config_adadelta['batch_size'])
+#             loss = engine_adadelta.train_an_epoch(train_loader_adadelta, epoch_id=epoch)
+#             hit_ratio, ndcg = engine_adadelta.evaluate(evaluate_data, epoch_id=epoch)
+#             engine_adadelta.save(config_adadelta['alias'], epoch, hit_ratio, ndcg)
+#             adadelta_hr.append(hit_ratio) 
+#             adadelta_ndcg.append(ndcg)
+#             adadelta_loss.append(loss)   
+#             
+#             if (epoch+1) == config_adadelta['num_epoch']:   
+#                 with open('optimization/gmf_adadelta.csv', 'w') as f:
+#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+#                     csvlogger.writerow(zip(adadelta_hr, adadelta_ndcg, adadelta_loss))
+#                 
+#         elif x == 1: #2 Adagrad Optimization
+#             print('Epoch Adagrad {} starts !'.format(epoch))
+#             print('-' * 80)
+#             train_loader_adagrad = sample_generator.instance_a_train_loader(config_adagrad['num_negative'], config_adagrad['batch_size'])
+#             loss = engine_adagrad.train_an_epoch(train_loader_adagrad, epoch_id=epoch)
+#             hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
+#             engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
+#             adagrad_hr.append(hit_ratio) 
+#             adagrad_ndcg.append(ndcg)
+#             adagrad_loss.append(loss)   
+#             
+#             if (epoch+1) == config_adagrad['num_epoch']:   
+#                 with open('optimization/gmf_adagrad.csv', 'w') as f:
+#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+#                     csvlogger.writerow(zip(adagrad_hr, adagrad_ndcg, adagrad_loss))
+#                 
+#         elif x == 2: #3 Adam Optimization
+#             print('Epoch Adam {} starts !'.format(epoch))
+#             print('-' * 80)
+#             train_loader_adam = sample_generator.instance_a_train_loader(config_adam['num_negative'], config_adam['batch_size'])
+#             loss = engine_adam.train_an_epoch(train_loader_adam, epoch_id=epoch)
+#             hit_ratio, ndcg = engine_adam.evaluate(evaluate_data, epoch_id=epoch)
+#             engine_adam.save(config_adam['alias'], epoch, hit_ratio, ndcg)
+#             adam_hr.append(hit_ratio) 
+#             adam_ndcg.append(ndcg)
+#             adam_loss.append(loss)   
+#             
+#             if (epoch+1) == config_adam['num_epoch']:   
+#                 with open('optimization/gmf_adam.csv', 'w') as f:
+#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+#                     csvlogger.writerow(zip(adam_hr, adam_ndcg, adam_loss))
+#                 
+#                 
+#         elif x == 3: #4 Adamax Optimization
+#             print('Epoch Adamax {} starts !'.format(epoch))
+#             print('-' * 80)
+#             train_loader_adamax = sample_generator.instance_a_train_loader(config_adamax['num_negative'], config_adamax['batch_size'])
+#             loss = engine_adamax.train_an_epoch(train_loader_adamax, epoch_id=epoch)
+#             hit_ratio, ndcg = engine_adamax.evaluate(evaluate_data, epoch_id=epoch)
+#             engine_adamax.save(config_adamax['alias'], epoch, hit_ratio, ndcg)
+#             adamax_hr.append(hit_ratio) 
+#             adamax_ndcg.append(ndcg)
+#             adamax_loss.append(loss)   
+#             
+#             if (epoch+1) == config_adamax['num_epoch']:   
+#                 with open('optimization/gmf_adamax.csv', 'w') as f:
+#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+#                     csvlogger.writerow(zip(adamax_hr, adamax_ndcg, adamax_loss))
                 
-        elif x == 1: #2 Adagrad Optimization
-            print('Epoch Adagrad {} starts !'.format(epoch))
-            print('-' * 80)
-            train_loader_adagrad = sample_generator.instance_a_train_loader(config_adagrad['num_negative'], config_adagrad['batch_size'])
-            loss = engine_adagrad.train_an_epoch(train_loader_adagrad, epoch_id=epoch)
-            hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
-            engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
-            adagrad_hr.append(hit_ratio) 
-            adagrad_ndcg.append(ndcg)
-            adagrad_loss.append(loss)   
-            
-            if (epoch+1) == config_adagrad['num_epoch']:   
-                with open('optimization/gmf_adagrad.csv', 'w') as f:
-                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-                    csvlogger.writerow(zip(adagrad_hr, adagrad_ndcg, adagrad_loss))
+#         if x == 4: #5 ASGD Optimization
+#             print('Epoch ASGD {} starts !'.format(epoch))
+#             print('-' * 80)
+#             train_loader_asgd = sample_generator.instance_a_train_loader(config_asgd['num_negative'], config_asgd['batch_size'])
+#             loss = engine_asgd.train_an_epoch(train_loader_asgd, epoch_id=epoch)
+#             hit_ratio, ndcg = engine_asgd.evaluate(evaluate_data, epoch_id=epoch)
+#             engine_asgd.save(config_asgd['alias'], epoch, hit_ratio, ndcg)
+#             asgd_hr.append(hit_ratio) 
+#             asgd_ndcg.append(ndcg)
+#             asgd_loss.append(loss)   
+#             
+#             if (epoch+1) == config_asgd['num_epoch']:   
+#                 with open('optimization/gmf_asgd.csv', 'w') as f:
+#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+#                     csvlogger.writerow(zip(asgd_hr, asgd_ndcg, asgd_loss))
                 
-        elif x == 2: #3 Adam Optimization
-            print('Epoch Adam {} starts !'.format(epoch))
-            print('-' * 80)
-            train_loader_adam = sample_generator.instance_a_train_loader(config_adam['num_negative'], config_adam['batch_size'])
-            loss = engine_adam.train_an_epoch(train_loader_adam, epoch_id=epoch)
-            hit_ratio, ndcg = engine_adam.evaluate(evaluate_data, epoch_id=epoch)
-            engine_adam.save(config_adam['alias'], epoch, hit_ratio, ndcg)
-            adam_hr.append(hit_ratio) 
-            adam_ndcg.append(ndcg)
-            adam_loss.append(loss)   
-            
-            if (epoch+1) == config_adam['num_epoch']:   
-                with open('optimization/gmf_adam.csv', 'w') as f:
-                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-                    csvlogger.writerow(zip(adam_hr, adam_ndcg, adam_loss))
-                
-                
-        elif x == 3: #4 Adamax Optimization
-            print('Epoch Adamax {} starts !'.format(epoch))
-            print('-' * 80)
-            train_loader_adamax = sample_generator.instance_a_train_loader(config_adamax['num_negative'], config_adamax['batch_size'])
-            loss = engine_adamax.train_an_epoch(train_loader_adamax, epoch_id=epoch)
-            hit_ratio, ndcg = engine_adamax.evaluate(evaluate_data, epoch_id=epoch)
-            engine_adamax.save(config_adamax['alias'], epoch, hit_ratio, ndcg)
-            adamax_hr.append(hit_ratio) 
-            adamax_ndcg.append(ndcg)
-            adamax_loss.append(loss)   
-            
-            if (epoch+1) == config_adamax['num_epoch']:   
-                with open('optimization/gmf_adamax.csv', 'w') as f:
-                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-                    csvlogger.writerow(zip(adamax_hr, adamax_ndcg, adamax_loss))
-                
-        elif x == 4: #5 ASGD Optimization
-            print('Epoch ASGD {} starts !'.format(epoch))
-            print('-' * 80)
-            train_loader_asgd = sample_generator.instance_a_train_loader(config_asgd['num_negative'], config_asgd['batch_size'])
-            loss = engine_asgd.train_an_epoch(train_loader_asgd, epoch_id=epoch)
-            hit_ratio, ndcg = engine_asgd.evaluate(evaluate_data, epoch_id=epoch)
-            engine_asgd.save(config_asgd['alias'], epoch, hit_ratio, ndcg)
-            asgd_hr.append(hit_ratio) 
-            asgd_ndcg.append(ndcg)
-            asgd_loss.append(loss)   
-            
-            if (epoch+1) == config_asgd['num_epoch']:   
-                with open('optimization/gmf_asgd.csv', 'w') as f:
-                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-                    csvlogger.writerow(zip(asgd_hr, asgd_ndcg, asgd_loss))
-                
-        elif x == 5: #6 RMSprop Optimization
+        if x == 5: #6 RMSprop Optimization
             print('Epoch RMSprop {} starts !'.format(epoch))
             print('-' * 80)
             train_loader_rmsprop = sample_generator.instance_a_train_loader(config_rmsprop['num_negative'], config_rmsprop['batch_size'])
