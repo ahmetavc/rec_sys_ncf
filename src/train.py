@@ -31,7 +31,7 @@ gmf_config_adadelta = {'alias': 'gmf_factor8neg4-implict-adadelta',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
 
 mlp_config_adadelta = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adadelta',
-              'num_epoch': 1,
+              'num_epoch': 20,
               'batch_size': 1024,  
               'optimizer': 'adadelta',
               'adadelta_lr': 1e-3,
@@ -69,7 +69,7 @@ gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'}
 
 mlp_config_adagrad = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adagrad',
-              'num_epoch': 1,
+              'num_epoch': 20,
               'batch_size': 1024,  
               'optimizer': 'adagrad',
               'adagrad_lr': 1e-3,
@@ -107,7 +107,7 @@ gmf_config_adam = {'alias': 'gmf_factor8neg4-implict-adam',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
 
 mlp_config_adam = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adam',
-              'num_epoch': 1,
+              'num_epoch': 20,
               'batch_size': 1024,  
               'optimizer': 'adam',
               'adam_lr': 1e-3,
@@ -145,7 +145,7 @@ gmf_config_adamax = {'alias': 'gmf_factor8neg4-implict-adamax',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'}
 
 mlp_config_adamax = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adamax',
-              'num_epoch': 1,
+              'num_epoch': 20,
               'batch_size': 1024,  
               'optimizer': 'adamax',
               'adamax_lr': 1e-3,
@@ -183,7 +183,7 @@ gmf_config_asgd = {'alias': 'gmf_factor8neg4-implict-asgd',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
 
 mlp_config_asgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-asgd',
-              'num_epoch': 1,
+              'num_epoch': 20,
               'batch_size': 1024,  
               'optimizer': 'asgd',
               'asgd_lr': 1e-3,
@@ -221,7 +221,7 @@ gmf_config_rmsprop = {'alias': 'gmf_factor8neg4-implict-rmsprop',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_rmsprop.model'}
 
 mlp_config_rmsprop = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-rmsprop',
-              'num_epoch': 1,
+              'num_epoch': 20,
               'batch_size': 1024,  
               'optimizer': 'rmsprop',
               'rmsprop_lr': 1e-3,
@@ -252,7 +252,7 @@ gmf_config_sgd = {'alias': 'gmf_factor8neg4-implict-sgd',
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sgd.model'}
 
 mlp_config_sgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-sgd',
-              'num_epoch': 1,
+              'num_epoch': 20,
               'batch_size': 1024,  
               'optimizer': 'sgd',
               'sgd_lr': 1e-3,
