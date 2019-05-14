@@ -47,16 +47,29 @@ mlp_config_adadelta = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adadelta_Epoch19_HR0.1010_NDCG0.0457_adadelta.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
 
+neumf_config_adadelta = {'alias': 'pretrain_neumf_factor8neg4-adadelta',
+                'num_epoch': 1,
+                'batch_size': 1024,
+                'optimizer': 'adadelta',
+                'adadelta_lr': 1e-3,
+                'num_users': 6040,
+                'num_items': 3706,
+                'latent_dim_mf': 8,
+                'latent_dim_mlp': 8,
+                'num_negative': 4,
+                'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+                'l2_regularization': 0,
+                'use_cuda': True,
+                'device_id': 0,
+                'pretrain': True,
+                'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adadelta_Epoch19_HR0.1010_NDCG0.0457_adadelta.model'),
+                'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adadelta_Epoch19_HR0.1104_NDCG0.0514_adadelta.model'),
+                'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'
+                }
+
 gmf_config_adagrad = {'alias': 'gmf_factor8neg4-implict-adagrad',
               'num_epoch': 20,
               'batch_size': 1024,
-              # 'optimizer': 'sgd',
-              # 'sgd_lr': 1e-3,
-              # 'sgd_momentum': 0.9,
-              # 'optimizer': 'rmsprop',
-              # 'rmsprop_lr': 1e-3,
-              # 'rmsprop_alpha': 0.99,
-              # 'rmsprop_momentum': 0,
               'optimizer': 'adagrad',
               'adagrad_lr': 1e-3,
               'num_users': 6040,
@@ -85,16 +98,29 @@ mlp_config_adagrad = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adagrad_Epoch19_HR0.1066_NDCG0.0479_adagrad.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'}
 
+neumf_config_adagrad = {'alias': 'pretrain_neumf_factor8neg4-adagrad',
+                'num_epoch': 1,
+                'batch_size': 1024,
+                'optimizer': 'adagrad',
+                'adagrad_lr': 1e-3,
+                'num_users': 6040,
+                'num_items': 3706,
+                'latent_dim_mf': 8,
+                'latent_dim_mlp': 8,
+                'num_negative': 4,
+                'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+                'l2_regularization': 0,
+                'use_cuda': True,
+                'device_id': 0,
+                'pretrain': True,
+                'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adagrad_Epoch19_HR0.1066_NDCG0.0479_adagrad.model'),
+                'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adagrad_Epoch19_HR0.2846_NDCG0.1396_adagrad.model'),
+                'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'
+                }
+
 gmf_config_adam = {'alias': 'gmf_factor8neg4-implict-adam',
               'num_epoch': 20,
               'batch_size': 1024,
-              # 'optimizer': 'sgd',
-              # 'sgd_lr': 1e-3,
-              # 'sgd_momentum': 0.9,
-              # 'optimizer': 'rmsprop',
-              # 'rmsprop_lr': 1e-3,
-              # 'rmsprop_alpha': 0.99,
-              # 'rmsprop_momentum': 0,
               'optimizer': 'adam',
               'adam_lr': 1e-3,
               'num_users': 6040,
@@ -123,16 +149,29 @@ mlp_config_adam = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adam_Epoch19_HR0.6025_NDCG0.3427_adam.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
 
+neumf_config_adam = {'alias': 'pretrain_neumf_factor8neg4-adam',
+                'num_epoch': 1,
+                'batch_size': 1024,
+                'optimizer': 'adam',
+                'adam_lr': 1e-3,
+                'num_users': 6040,
+                'num_items': 3706,
+                'latent_dim_mf': 8,
+                'latent_dim_mlp': 8,
+                'num_negative': 4,
+                'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+                'l2_regularization': 0,
+                'use_cuda': True,
+                'device_id': 0,
+                'pretrain': True,
+                'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adam_Epoch19_HR0.6025_NDCG0.3427_adam.model'),
+                'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adam_Epoch19_HR0.6508_NDCG0.3807_adam.model'),
+                'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'
+                }
+
 gmf_config_adamax = {'alias': 'gmf_factor8neg4-implict-adamax',
               'num_epoch': 20,
               'batch_size': 1024,
-              # 'optimizer': 'sgd',
-              # 'sgd_lr': 1e-3,
-              # 'sgd_momentum': 0.9,
-              # 'optimizer': 'rmsprop',
-              # 'rmsprop_lr': 1e-3,
-              # 'rmsprop_alpha': 0.99,
-              # 'rmsprop_momentum': 0,
               'optimizer': 'adamax',
               'adamax_lr': 1e-3,
               'num_users': 6040,
@@ -161,16 +200,29 @@ mlp_config_adamax = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.00
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adamax_Epoch19_HR0.2422_NDCG0.1265_adamax.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'}
 
+neumf_config_adamax = {'alias': 'pretrain_neumf_factor8neg4-adamax',
+                'num_epoch': 1,
+                'batch_size': 1024,
+                'optimizer': 'adamax',
+                'adamax_lr': 1e-3,
+                'num_users': 6040,
+                'num_items': 3706,
+                'latent_dim_mf': 8,
+                'latent_dim_mlp': 8,
+                'num_negative': 4,
+                'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+                'l2_regularization': 0,
+                'use_cuda': True,
+                'device_id': 0,
+                'pretrain': True,
+                'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-adamax_Epoch19_HR0.2422_NDCG0.1265_adamax.model'),
+                'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-adamax_Epoch19_HR0.4623_NDCG0.2553_adamax.model'),
+                'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'
+                }
+
 gmf_config_asgd = {'alias': 'gmf_factor8neg4-implict-asgd',
               'num_epoch': 20,
               'batch_size': 1024,
-              # 'optimizer': 'sgd',
-              # 'sgd_lr': 1e-3,
-              # 'sgd_momentum': 0.9,
-              # 'optimizer': 'rmsprop',
-              # 'rmsprop_lr': 1e-3,
-              # 'rmsprop_alpha': 0.99,
-              # 'rmsprop_momentum': 0,
               'optimizer': 'asgd',
               'asgd_lr': 1e-3,
               'num_users': 6040,
@@ -198,6 +250,26 @@ mlp_config_asgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000
               'pretrain': True,
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-asgd_Epoch19_HR0.0949_NDCG0.0418_asgd.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
+
+neumf_config_asgd = {'alias': 'pretrain_neumf_factor8neg4-asgd',
+                'num_epoch': 1,
+                'batch_size': 1024,
+                'optimizer': 'asgd',
+                'asgd_lr': 1e-3,
+                'num_users': 6040,
+                'num_items': 3706,
+                'latent_dim_mf': 8,
+                'latent_dim_mlp': 8,
+                'num_negative': 4,
+                'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+                'l2_regularization': 0,
+                'use_cuda': True,
+                'device_id': 0,
+                'pretrain': True,
+                'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-asgd_Epoch19_HR0.0949_NDCG0.0418_asgd.model'),
+                'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-asgd_Epoch19_HR0.1078_NDCG0.0503_asgd.model'),
+                'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'
+                }
 
 gmf_config_rmsprop = {'alias': 'gmf_factor8neg4-implict-rmsprop',
               'num_epoch': 20,
@@ -237,6 +309,26 @@ mlp_config_rmsprop = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-rmsprop_Epoch19_HR0.5689_NDCG0.3182_rmsprop.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_rmsprop.model'}
 
+neumf_config_rmsprop = {'alias': 'pretrain_neumf_factor8neg4-rmsprop',
+                'num_epoch': 1,
+                'batch_size': 1024,
+                'optimizer': 'rmsprop',
+                'rmsprop_lr': 1e-3,
+                'num_users': 6040,
+                'num_items': 3706,
+                'latent_dim_mf': 8,
+                'latent_dim_mlp': 8,
+                'num_negative': 4,
+                'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+                'l2_regularization': 0,
+                'use_cuda': True,
+                'device_id': 0,
+                'pretrain': True,
+                'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-rmsprop_Epoch19_HR0.5689_NDCG0.3182_rmsprop.model'),
+                'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-rmsprop_Epoch19_HR0.6286_NDCG0.3623_rmsprop.model'),
+                'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_rmsprop.model'
+                }
+
 gmf_config_sgd = {'alias': 'gmf_factor8neg4-implict-sgd',
               'num_epoch': 20,
               'batch_size': 1024,
@@ -268,6 +360,26 @@ mlp_config_sgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.00000
               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-sgd_Epoch19_HR0.0944_NDCG0.0426_sgd.model'),
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sgd.model'}
 
+neumf_config_sgd = {'alias': 'pretrain_neumf_factor8neg4-sgd',
+                'num_epoch': 1,
+                'batch_size': 1024,
+                'optimizer': 'sgd',
+                'sgd_lr': 1e-3,
+                'num_users': 6040,
+                'num_items': 3706,
+                'latent_dim_mf': 8,
+                'latent_dim_mlp': 8,
+                'num_negative': 4,
+                'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+                'l2_regularization': 0,
+                'use_cuda': True,
+                'device_id': 0,
+                'pretrain': True,
+                'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4-implict-sgd_Epoch19_HR0.0944_NDCG0.0426_sgd.model'),
+                'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001-sgd_Epoch19_HR0.1065_NDCG0.0499_sgd.model'),
+                'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sgd.model'
+                }
+
 
 # mlp_config = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000001',
 #               'num_epoch': 200,
@@ -286,25 +398,25 @@ mlp_config_sgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.00000
 #               'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4_Epoch100_HR0.6391_NDCG0.2852.model'),
 #               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}.model'}
 
-neumf_config = {'alias': 'pretrain_neumf_factor8neg4',
-                'num_epoch': 200,
-                'batch_size': 1024,
-                'optimizer': 'adam',
-                'adam_lr': 1e-3,
-                'num_users': 6040,
-                'num_items': 3706,
-                'latent_dim_mf': 8,
-                'latent_dim_mlp': 8,
-                'num_negative': 4,
-                'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
-                'l2_regularization': 0.01,
-                'use_cuda': True,
-                'device_id': 0,
-                'pretrain': False,
-                'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4_Epoch100_HR0.xxxx_NDCG0.2852.model'),
-                'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_Epoch100_HR0.xxxx_NDCG0.2463.model'),
-                'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}.model'
-                }
+# neumf_config = {'alias': 'pretrain_neumf_factor8neg4',
+#                 'num_epoch': 1,
+#                 'batch_size': 1024,
+#                 'optimizer': 'adam',
+#                 'adam_lr': 1e-3,
+#                 'num_users': 6040,
+#                 'num_items': 3706,
+#                 'latent_dim_mf': 8,
+#                 'latent_dim_mlp': 8,
+#                 'num_negative': 4,
+#                 'layers': [16,32,16,8],  # layers[0] is the concat of latent user vector & latent item vector
+#                 'l2_regularization': 0.01,
+#                 'use_cuda': True,
+#                 'device_id': 0,
+#                 'pretrain': False,
+#                 'pretrain_mf': 'checkpoints/{}'.format('gmf_factor8neg4_Epoch100_HR0.xxxx_NDCG0.2852.model'),
+#                 'pretrain_mlp': 'checkpoints/{}'.format('mlp_factor8neg4_Epoch100_HR0.xxxx_NDCG0.2463.model'),
+#                 'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}.model'
+#                 }
 
 # Load Data
 ml1m_dir = 'data/ml-1m/ratings.dat'
@@ -340,23 +452,37 @@ evaluate_data = sample_generator.evaluate_data
 
 # config = mlp_config
 # engine = MLPEngine(config)
-config_adadelta = mlp_config_adadelta
-engine_adadelta = MLPEngine(config_adadelta)
-config_adagrad = mlp_config_adagrad
-engine_adagrad = MLPEngine(config_adagrad)
-config_adam = mlp_config_adam
-engine_adam = MLPEngine(config_adam)
-config_adamax = mlp_config_adamax
-engine_adamax = MLPEngine(config_adamax)
-config_asgd= mlp_config_asgd
-engine_asgd = MLPEngine(config_asgd)
-config_rmsprop= mlp_config_rmsprop
-engine_rmsprop = MLPEngine(config_rmsprop)
-config_sgd= mlp_config_sgd
-engine_sgd = MLPEngine(config_sgd)
+# config_adadelta = mlp_config_adadelta
+# engine_adadelta = MLPEngine(config_adadelta)
+# config_adagrad = mlp_config_adagrad
+# engine_adagrad = MLPEngine(config_adagrad)
+# config_adam = mlp_config_adam
+# engine_adam = MLPEngine(config_adam)
+# config_adamax = mlp_config_adamax
+# engine_adamax = MLPEngine(config_adamax)
+# config_asgd= mlp_config_asgd
+# engine_asgd = MLPEngine(config_asgd)
+# config_rmsprop= mlp_config_rmsprop
+# engine_rmsprop = MLPEngine(config_rmsprop)
+# config_sgd= mlp_config_sgd
+# engine_sgd = MLPEngine(config_sgd)
 
 # config = neumf_config
 # engine = NeuMFEngine(config)
+config_adadelta = neumf_config_adadelta
+engine_adadelta = NeuMFEngine(config_adadelta)
+config_adagrad = neumf_config_adagrad
+engine_adagrad = NeuMFEngine(config_adagrad)
+config_adam = neumf_config_adam
+engine_adam = NeuMFEngine(config_adam)
+config_adamax = neumf_config_adamax
+engine_adamax = NeuMFEngine(config_adamax)
+config_asgd= neumf_config_asgd
+engine_asgd = NeuMFEngine(config_asgd)
+config_rmsprop= neumf_config_rmsprop
+engine_rmsprop = NeuMFEngine(config_rmsprop)
+config_sgd= neumf_config_sgd
+engine_sgd = NeuMFEngine(config_sgd)
 
 #1 Adadelta Optimization
 adadelta_hr = []
@@ -396,88 +522,88 @@ sgd_loss = []
 for x in range (7): #Number of optimizations
     for epoch in range(config_adadelta['num_epoch']):
         
-#         if x == 0: #1 Adadelta Optimization
-#             print('Epoch Adadelta {} starts !'.format(epoch))
-#             print('-' * 80)
-#             train_loader_adadelta = sample_generator.instance_a_train_loader(config_adadelta['num_negative'], config_adadelta['batch_size'])
-#             loss = engine_adadelta.train_an_epoch(train_loader_adadelta, epoch_id=epoch)
-#             hit_ratio, ndcg = engine_adadelta.evaluate(evaluate_data, epoch_id=epoch)
-#             engine_adadelta.save(config_adadelta['alias'], epoch, hit_ratio, ndcg)
-#             adadelta_hr.append(hit_ratio) 
-#             adadelta_ndcg.append(ndcg)
-#             adadelta_loss.append(loss)   
-#             
-#             if (epoch+1) == config_adadelta['num_epoch']:   
-#                 with open('optimization/gmf_adadelta.csv', 'w') as f:
-#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-#                     csvlogger.writerow(zip(adadelta_hr, adadelta_ndcg, adadelta_loss))
-#                 
-#         elif x == 1: #2 Adagrad Optimization
-#             print('Epoch Adagrad {} starts !'.format(epoch))
-#             print('-' * 80)
-#             train_loader_adagrad = sample_generator.instance_a_train_loader(config_adagrad['num_negative'], config_adagrad['batch_size'])
-#             loss = engine_adagrad.train_an_epoch(train_loader_adagrad, epoch_id=epoch)
-#             hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
-#             engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
-#             adagrad_hr.append(hit_ratio) 
-#             adagrad_ndcg.append(ndcg)
-#             adagrad_loss.append(loss)   
-#             
-#             if (epoch+1) == config_adagrad['num_epoch']:   
-#                 with open('optimization/gmf_adagrad.csv', 'w') as f:
-#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-#                     csvlogger.writerow(zip(adagrad_hr, adagrad_ndcg, adagrad_loss))
-#                 
-#         elif x == 2: #3 Adam Optimization
-#             print('Epoch Adam {} starts !'.format(epoch))
-#             print('-' * 80)
-#             train_loader_adam = sample_generator.instance_a_train_loader(config_adam['num_negative'], config_adam['batch_size'])
-#             loss = engine_adam.train_an_epoch(train_loader_adam, epoch_id=epoch)
-#             hit_ratio, ndcg = engine_adam.evaluate(evaluate_data, epoch_id=epoch)
-#             engine_adam.save(config_adam['alias'], epoch, hit_ratio, ndcg)
-#             adam_hr.append(hit_ratio) 
-#             adam_ndcg.append(ndcg)
-#             adam_loss.append(loss)   
-#             
-#             if (epoch+1) == config_adam['num_epoch']:   
-#                 with open('optimization/gmf_adam.csv', 'w') as f:
-#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-#                     csvlogger.writerow(zip(adam_hr, adam_ndcg, adam_loss))
-#                 
-#                 
-#         elif x == 3: #4 Adamax Optimization
-#             print('Epoch Adamax {} starts !'.format(epoch))
-#             print('-' * 80)
-#             train_loader_adamax = sample_generator.instance_a_train_loader(config_adamax['num_negative'], config_adamax['batch_size'])
-#             loss = engine_adamax.train_an_epoch(train_loader_adamax, epoch_id=epoch)
-#             hit_ratio, ndcg = engine_adamax.evaluate(evaluate_data, epoch_id=epoch)
-#             engine_adamax.save(config_adamax['alias'], epoch, hit_ratio, ndcg)
-#             adamax_hr.append(hit_ratio) 
-#             adamax_ndcg.append(ndcg)
-#             adamax_loss.append(loss)   
-#             
-#             if (epoch+1) == config_adamax['num_epoch']:   
-#                 with open('optimization/gmf_adamax.csv', 'w') as f:
-#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-#                     csvlogger.writerow(zip(adamax_hr, adamax_ndcg, adamax_loss))
+        if x == 0: #1 Adadelta Optimization
+            print('Epoch Adadelta {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_adadelta = sample_generator.instance_a_train_loader(config_adadelta['num_negative'], config_adadelta['batch_size'])
+            loss = engine_adadelta.train_an_epoch(train_loader_adadelta, epoch_id=epoch)
+            hit_ratio, ndcg = engine_adadelta.evaluate(evaluate_data, epoch_id=epoch)
+            engine_adadelta.save(config_adadelta['alias'], epoch, hit_ratio, ndcg)
+            adadelta_hr.append(hit_ratio) 
+            adadelta_ndcg.append(ndcg)
+            adadelta_loss.append(loss)   
+             
+            if (epoch+1) == config_adadelta['num_epoch']:   
+                with open('optimization/neumf_adadelta.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(adadelta_hr, adadelta_ndcg, adadelta_loss))
+                 
+        elif x == 1: #2 Adagrad Optimization
+            print('Epoch Adagrad {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_adagrad = sample_generator.instance_a_train_loader(config_adagrad['num_negative'], config_adagrad['batch_size'])
+            loss = engine_adagrad.train_an_epoch(train_loader_adagrad, epoch_id=epoch)
+            hit_ratio, ndcg = engine_adagrad.evaluate(evaluate_data, epoch_id=epoch)
+            engine_adagrad.save(config_adagrad['alias'], epoch, hit_ratio, ndcg)
+            adagrad_hr.append(hit_ratio) 
+            adagrad_ndcg.append(ndcg)
+            adagrad_loss.append(loss)   
+             
+            if (epoch+1) == config_adagrad['num_epoch']:   
+                with open('optimization/neumf_adagrad.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(adagrad_hr, adagrad_ndcg, adagrad_loss))
+                 
+        elif x == 2: #3 Adam Optimization
+            print('Epoch Adam {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_adam = sample_generator.instance_a_train_loader(config_adam['num_negative'], config_adam['batch_size'])
+            loss = engine_adam.train_an_epoch(train_loader_adam, epoch_id=epoch)
+            hit_ratio, ndcg = engine_adam.evaluate(evaluate_data, epoch_id=epoch)
+            engine_adam.save(config_adam['alias'], epoch, hit_ratio, ndcg)
+            adam_hr.append(hit_ratio) 
+            adam_ndcg.append(ndcg)
+            adam_loss.append(loss)   
+             
+            if (epoch+1) == config_adam['num_epoch']:   
+                with open('optimization/neumf_adam.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(adam_hr, adam_ndcg, adam_loss))
+                 
+                 
+        elif x == 3: #4 Adamax Optimization
+            print('Epoch Adamax {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_adamax = sample_generator.instance_a_train_loader(config_adamax['num_negative'], config_adamax['batch_size'])
+            loss = engine_adamax.train_an_epoch(train_loader_adamax, epoch_id=epoch)
+            hit_ratio, ndcg = engine_adamax.evaluate(evaluate_data, epoch_id=epoch)
+            engine_adamax.save(config_adamax['alias'], epoch, hit_ratio, ndcg)
+            adamax_hr.append(hit_ratio) 
+            adamax_ndcg.append(ndcg)
+            adamax_loss.append(loss)   
+             
+            if (epoch+1) == config_adamax['num_epoch']:   
+                with open('optimization/neumf_adamax.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(adamax_hr, adamax_ndcg, adamax_loss))
                 
-#         if x == 4: #5 ASGD Optimization
-#             print('Epoch ASGD {} starts !'.format(epoch))
-#             print('-' * 80)
-#             train_loader_asgd = sample_generator.instance_a_train_loader(config_asgd['num_negative'], config_asgd['batch_size'])
-#             loss = engine_asgd.train_an_epoch(train_loader_asgd, epoch_id=epoch)
-#             hit_ratio, ndcg = engine_asgd.evaluate(evaluate_data, epoch_id=epoch)
-#             engine_asgd.save(config_asgd['alias'], epoch, hit_ratio, ndcg)
-#             asgd_hr.append(hit_ratio) 
-#             asgd_ndcg.append(ndcg)
-#             asgd_loss.append(loss)   
-#             
-#             if (epoch+1) == config_asgd['num_epoch']:   
-#                 with open('optimization/gmf_asgd.csv', 'w') as f:
-#                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
-#                     csvlogger.writerow(zip(asgd_hr, asgd_ndcg, asgd_loss))
+        elif x == 4: #5 ASGD Optimization
+            print('Epoch ASGD {} starts !'.format(epoch))
+            print('-' * 80)
+            train_loader_asgd = sample_generator.instance_a_train_loader(config_asgd['num_negative'], config_asgd['batch_size'])
+            loss = engine_asgd.train_an_epoch(train_loader_asgd, epoch_id=epoch)
+            hit_ratio, ndcg = engine_asgd.evaluate(evaluate_data, epoch_id=epoch)
+            engine_asgd.save(config_asgd['alias'], epoch, hit_ratio, ndcg)
+            asgd_hr.append(hit_ratio) 
+            asgd_ndcg.append(ndcg)
+            asgd_loss.append(loss)   
+             
+            if (epoch+1) == config_asgd['num_epoch']:   
+                with open('optimization/neumf_asgd.csv', 'w') as f:
+                    csvlogger = csv.writer(f, dialect='excel', delimiter=';')
+                    csvlogger.writerow(zip(asgd_hr, asgd_ndcg, asgd_loss))
                 
-        if x == 5: #6 RMSprop Optimization
+        elif x == 5: #6 RMSprop Optimization
             print('Epoch RMSprop {} starts !'.format(epoch))
             print('-' * 80)
             train_loader_rmsprop = sample_generator.instance_a_train_loader(config_rmsprop['num_negative'], config_rmsprop['batch_size'])
@@ -489,7 +615,7 @@ for x in range (7): #Number of optimizations
             rmsprop_loss.append(loss)   
             
             if (epoch+1) == config_rmsprop['num_epoch']:   
-                with open('optimization/gmf_rmsprop.csv', 'w') as f:
+                with open('optimization/neumf_rmsprop.csv', 'w') as f:
                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
                     csvlogger.writerow(zip(rmsprop_hr, rmsprop_ndcg, rmsprop_loss))
 
@@ -506,6 +632,6 @@ for x in range (7): #Number of optimizations
             sgd_loss.append(loss)   
             
             if (epoch+1) == config_sgd['num_epoch']:   
-                with open('optimization/gmf_sgd.csv', 'w') as f:
+                with open('optimization/neumf_sgd.csv', 'w') as f:
                     csvlogger = csv.writer(f, dialect='excel', delimiter=';')
                     csvlogger.writerow(zip(sgd_hr, sgd_ndcg, sgd_loss))
