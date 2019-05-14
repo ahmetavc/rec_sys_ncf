@@ -1,5 +1,12 @@
+import pickle
 import numpy as np
 import matplotlib.pyplot as plt
+
+def unpickle(filepath):
+    with open(filepath, 'rb') as fo:
+        res = pickle.load(fo, encoding='bytes')
+    return res
+
 filepath = input('Enter file path you want to plot: ')
 title = input('Enter plot title: ')
 xaxis = input('Enter x- axis name: ')
