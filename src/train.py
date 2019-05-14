@@ -48,7 +48,7 @@ mlp_config_adadelta = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adadelta.model'}
 
 neumf_config_adadelta = {'alias': 'pretrain_neumf_factor8neg4-adadelta',
-                'num_epoch': 1,
+                'num_epoch': 20,
                 'batch_size': 1024,
                 'optimizer': 'adadelta',
                 'adadelta_lr': 1e-3,
@@ -99,7 +99,7 @@ mlp_config_adagrad = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adagrad.model'}
 
 neumf_config_adagrad = {'alias': 'pretrain_neumf_factor8neg4-adagrad',
-                'num_epoch': 1,
+                'num_epoch': 20,
                 'batch_size': 1024,
                 'optimizer': 'adagrad',
                 'adagrad_lr': 1e-3,
@@ -150,7 +150,7 @@ mlp_config_adam = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adam.model'}
 
 neumf_config_adam = {'alias': 'pretrain_neumf_factor8neg4-adam',
-                'num_epoch': 1,
+                'num_epoch': 20,
                 'batch_size': 1024,
                 'optimizer': 'adam',
                 'adam_lr': 1e-3,
@@ -201,7 +201,7 @@ mlp_config_adamax = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.00
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_adamax.model'}
 
 neumf_config_adamax = {'alias': 'pretrain_neumf_factor8neg4-adamax',
-                'num_epoch': 1,
+                'num_epoch': 20,
                 'batch_size': 1024,
                 'optimizer': 'adamax',
                 'adamax_lr': 1e-3,
@@ -252,7 +252,7 @@ mlp_config_asgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0000
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_asgd.model'}
 
 neumf_config_asgd = {'alias': 'pretrain_neumf_factor8neg4-asgd',
-                'num_epoch': 1,
+                'num_epoch': 20,
                 'batch_size': 1024,
                 'optimizer': 'asgd',
                 'asgd_lr': 1e-3,
@@ -310,7 +310,7 @@ mlp_config_rmsprop = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.0
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_rmsprop.model'}
 
 neumf_config_rmsprop = {'alias': 'pretrain_neumf_factor8neg4-rmsprop',
-                'num_epoch': 1,
+                'num_epoch': 20,
                 'batch_size': 1024,
                 'optimizer': 'rmsprop',
                 'rmsprop_lr': 1e-3,
@@ -361,7 +361,7 @@ mlp_config_sgd = {'alias': 'mlp_factor8neg4_bz256_166432168_pretrain_reg_0.00000
               'model_dir':'checkpoints/{}_Epoch{}_HR{:.4f}_NDCG{:.4f}_sgd.model'}
 
 neumf_config_sgd = {'alias': 'pretrain_neumf_factor8neg4-sgd',
-                'num_epoch': 1,
+                'num_epoch': 20,
                 'batch_size': 1024,
                 'optimizer': 'sgd',
                 'sgd_lr': 1e-3,
