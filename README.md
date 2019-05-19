@@ -1,1 +1,7 @@
-# recommendation_system_with_neural_collaborative_filtering
+# Recommendation System with Neural Collaborative Filtering
+Group 82
+```bash
+Ahmet Avci
+Laurenz Gutleder
+Levent Guner
+```
