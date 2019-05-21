@@ -10,10 +10,11 @@ Classical recommender systems make predictions based on users historical behavio
 
 Our work is based on a pytorch implementation [2] of the paper. We just focused on the training process in the files train.py and utils.py. There are different branches created by each of us for different parts of the project:
 
-- Branch 'ahmet': hyperparameter optimizations (learning rate, momentum, regularization) are handled and results re saved to the list.
+- Branch 'ahmet': hyperparameter optimizations (learning rate, momentum, regularization)
 - Branch 'laurenz': optimization algorithms (Adadelta, Adagrad, Adam, Adamax, ASGD, RMSprop, SGD)
 - Branch 'levant': hyperparameter optimizations (neural network depth)
 
 [1] He, X., Liao, L., Zhang, H., Liqiang, N., Hu, X. and Tat-Seng, C. (2017) Neural Collaborative Filtering. In
 Proceedings of the 26th International Conference on World Wide Web, Perth. Link: https://www.comp.nus.edu.sg/~xiangnan/papers/ncf.pdf
+
 [2] https://github.com/LaceyChen17/neural-collaborative-filtering
