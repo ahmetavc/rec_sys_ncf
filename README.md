@@ -12,7 +12,7 @@ Our work is based on a pytorch implementation [2] of the paper. We just focused 
 
 - Branch 'ahmet': hyperparameter optimizations (learning rate, momentum, regularization)
 - Branch 'laurenz': optimization algorithms (Adadelta, Adagrad, Adam, Adamax, ASGD, RMSprop, SGD)
-- Branch 'levant': hyperparameter optimizations (neural network depth)
+- Branch 'levent': hyperparameter optimizations (neural network depth)
 
 [1] He, X., Liao, L., Zhang, H., Liqiang, N., Hu, X. and Tat-Seng, C. (2017) Neural Collaborative Filtering. In
 Proceedings of the 26th International Conference on World Wide Web, Perth. Link: https://www.comp.nus.edu.sg/~xiangnan/papers/ncf.pdf
